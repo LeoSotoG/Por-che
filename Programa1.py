@@ -18,11 +18,10 @@ st.set_page_config(layout="wide")
 
 @st.cache_resource
 def load_model():
-    with open("modelo_porsche_0.pkl", "rb") as f:
-        data = pickle.load(f)
-    return data["model"], data["scaler"]
+    data = joblib.load("modelo_porsche_0.joblib")
+    return data["model"], data["scaler"], data["columns"]
 
-model, scaler = load_model()
+model, scaler, columns = load_model()
 
 
 # ----------------------------
@@ -276,7 +275,7 @@ with col2:
         ["DE", "ES", "FR", "IT", "NL", "BE", "LU"]
     )
 
-    data = joblib.load("modelo_porsche_0.pkl")
+    data = joblib.load("modelo_porsche_0.joblib")
     model = data["model"]
     scaler = data["scaler"]
     columns = data["columns"]
