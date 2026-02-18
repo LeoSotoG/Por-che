@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 import streamlit as st
 from openai import OpenAI
 from prompts import stronger_prompt
@@ -27,9 +26,7 @@ model, scaler, columns = load_model()
 # ----------------------------
 # CARGA DE VARIABLES DE ENTORNO
 # ----------------------------
-load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 MODEL = "gpt-4o-mini"
 
 # ----------------------------
